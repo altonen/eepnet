@@ -189,10 +189,10 @@ export async function buildEmissary() {
     {
       gzip: true,
       file: "/tmp/eepnet/emissary.tar",
-      cwd: "..",
+      cwd: "resources/",
     },
-    ["Dockerfile", "Cargo.toml", "Cargo.lock", "emissary-core", "emissary-cli"],
+    ["Dockerfile.emissary"],
   );
 
-  await new Image("emissary", "/tmp/eepnet/emissary.tar").build();
+  await new Image("emissary", "/tmp/eepnet/emissary.tar").build("Dockerfile.emissary");
 }
